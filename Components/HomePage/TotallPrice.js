@@ -5,8 +5,10 @@ import { AiFillCaretDown } from "react-icons/ai";
 import { GoGraph } from "react-icons/go";
 
 import PopupState, { bindMenu, bindTrigger } from "material-ui-popup-state";
+import { useGetOrdersQuery } from "../../redux/features/api/orderApiSlice";
 
 const TotallPrice = ({ allProducts }) => {
+    const { data: orderRedux, isLoading:confirmLoding, isError } = useGetOrdersQuery("confirmed");
     const [selectedOrder, setSelectedOrder] = useState('Today')
     const [totalOrder, setTotalOrder] = useState([]);
     const [updateOrder, setUpdateOrder] = useState("00");

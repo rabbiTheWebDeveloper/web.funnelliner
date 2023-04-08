@@ -25,8 +25,8 @@ const FollowUpOrder = ({ searchQuery, allProducts, show, advanceStatus }) => {
     setSearchQueryString(searchQuery);
   }, [searchQuery]);
 
-  const [products, setProducts] = useState([]);
-  const [filterProducts, setFilterProducts] = useState();
+  const [products, setProducts] = useState([data?.data]);
+  const [filterProducts, setFilterProducts] = useState(data?.data);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(25);
@@ -184,7 +184,7 @@ const FollowUpOrder = ({ searchQuery, allProducts, show, advanceStatus }) => {
 
   // search method
   const handleChangeSearchBox = () => {
-    const filtered = products.filter(
+    const filtered = data?.data?.filter(
       (item) =>
         item?.order_no?.toString().includes(searchQuery) ||
         item?.customer_name
