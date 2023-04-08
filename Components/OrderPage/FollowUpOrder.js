@@ -9,30 +9,36 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { baseUrl } from "../../constant/constant";
 import { headers } from "../../pages/api";
-import { useGetOrdersQuery } from "../../redux/features/api/orderApiSlice";
 import Note from "./Note";
 
-
+const options = [
+  // { value: "pending", label: "pending", id: 1 },
+  { value: "Confirmed", label: "Confirmed", id: 1 },
+  { value: "Cancelled", label: "Cancelled", id: 2 },
+  // { value: "Shipped", label: "Shipped", id: 3 },
+  // { value: "Delivered", label: "Delivered", id: 4 },
+  // { value: "Return", label: "Order Return", id: 5 },
+  // { value: "Follow Up", label: "Follow Up", id: 6 },
+];
 
 const handleClose = () => {
   setAnchorEl(null);
 };
 
 const FollowUpOrder = ({ searchQuery, allProducts, show, advanceStatus }) => {
-  const { data, isLoading, isError } = useGetOrdersQuery("follow_up");
   const [searchQueryString, setSearchQueryString] = useState(searchQuery);
   useEffect(() => {
     setSearchQueryString(searchQuery);
   }, [searchQuery]);
 
-  const [products, setProducts] = useState([data?.data]);
-  const [filterProducts, setFilterProducts] = useState(data?.data);
+  const [products, setProducts] = useState([]);
+  const [filterProducts, setFilterProducts] = useState();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(25);
   const [page, setPage] = useState(1);
   const [selectedOption, setSelectedOption] = useState("");
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [updateData, setUpdateData] = useState("");
 
   const [openStock, setOpenStock] = useState(false);
@@ -65,20 +71,20 @@ const FollowUpOrder = ({ searchQuery, allProducts, show, advanceStatus }) => {
     setAnchorEl(null);
   };
 
-  // useEffect(() => {
-  //   // axios
-  //   //     .get(baseUrl + "/client/orders", {headers: headers})
-  //   //     .then(function (response) {
-  //   //         // handle success
-  //   //         let allProduct = response?.data?.data;
-  //   const userProduct = Array.from(allProducts).filter(
-  //     (word) => word?.order_status == "follow_up"
-  //   );
-  //   setProducts(userProduct);
-  //   setFilterProducts(userProduct);
-  //   setIsLoading(false);
-  //   // });
-  // }, [updateData]);
+  useEffect(() => {
+    // axios
+    //     .get(baseUrl + "/client/orders", {headers: headers})
+    //     .then(function (response) {
+    //         // handle success
+    //         let allProduct = response?.data?.data;
+    const userProduct = Array.from(allProducts).filter(
+      (word) => word?.order_status == "follow_up"
+    );
+    setProducts(userProduct);
+    setFilterProducts(userProduct);
+    setIsLoading(false);
+    // });
+  }, [updateData]);
 
   const statusSubmit = (id, status) => {
     let statusUpdate = {
@@ -166,14 +172,14 @@ const FollowUpOrder = ({ searchQuery, allProducts, show, advanceStatus }) => {
 
   const indexOfLastProducts = currentPage * perPage;
   const indexOfFirstProducts = indexOfLastProducts - perPage;
-  const currentProduct = data?.data?.slice(
+  const currentProduct = products.slice(
     indexOfFirstProducts,
     indexOfLastProducts
   );
 
   const pageNumbers = [];
   if (searchQueryString?.length === 0) {
-    for (let i = 1; i <= Math.ceil( data?.data?.length / perPage); i++) {
+    for (let i = 1; i <= Math.ceil(products?.length / perPage); i++) {
       pageNumbers.push(i);
     }
   } else if (searchQueryString?.length > 0) {
@@ -184,7 +190,7 @@ const FollowUpOrder = ({ searchQuery, allProducts, show, advanceStatus }) => {
 
   // search method
   const handleChangeSearchBox = () => {
-    const filtered = data?.data?.filter(
+    const filtered = products.filter(
       (item) =>
         item?.order_no?.toString().includes(searchQuery) ||
         item?.customer_name
@@ -553,10 +559,10 @@ const FollowUpOrder = ({ searchQuery, allProducts, show, advanceStatus }) => {
                     </Box>
                   </td>
                 </tr>
-              ) : filterProducts?.length > 0 ? (
+              ) : allProducts?.length > 0 ? (
                 <>
                   <tbody>
-                    {filterProducts?.map((product, index) => {
+                    {allProducts?.map((product, index) => {
                       return (
                         <tr key={product.order_no} product={product}>
                           <td>{/* <Checkbox /> */}</td>
