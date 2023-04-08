@@ -26,7 +26,7 @@ const index = () => {
             });
 
             // console.log("setSalesTarget",data.data.data)
-            setAllProduct(data?.data?.data);
+            setAllProduct(data?.data);
         } catch (err) {
             console.log(err)
         }
@@ -68,7 +68,7 @@ useEffect(() => {
 }, []);
 
 
-
+console.log('Starting' ,allProduct)
 
     return (
         <Fragment>
