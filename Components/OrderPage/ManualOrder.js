@@ -1,7 +1,6 @@
 import { Box, Button, Modal, TextField } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiReceipt } from "react-icons/bi";
@@ -40,7 +39,6 @@ const ManualOrder = ({ setUpdateData, products }) => {
       }
       data.delivery_location = selectedDeliveryLocation
     }
-
     axios.post(process.env.API_URL + "/client/orders", data, {
       headers: headers,
     })

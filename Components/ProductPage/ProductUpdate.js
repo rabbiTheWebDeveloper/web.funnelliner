@@ -5,22 +5,19 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiReceipt } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
-import Swal from "sweetalert2";
+import { useToast } from "../../hook/useToast";
 import { headers } from "../../pages/api";
 
 
 const ProductUpdate = ({ id, category }) => {
-
-    // Tabs
+    const showToast = useToast();
     const [value, setValue] = useState("1");
-    // product add full funcation
-
     const [tabSelect, setTabSelect] = useState("1");
     const [mainImg, setMainImg] = useState();
     const [products, setProducts] = useState({});
     const [delivery, setDelivery] = useState("Free Delivery Charge")
-    const [insideDhaka, setInsideDhaka] = useState("")
-    const [outDhaka, setOutDhaka] = useState("")
+    const [insideDhaka, setInsideDhaka] = useState("0")
+    const [outDhaka, setOutDhaka] = useState("0")
 
 
     const [openSales, setOpenSales] = useState(false);
@@ -100,35 +97,21 @@ const ProductUpdate = ({ id, category }) => {
             formData.append("outside_dhaka", data.outside_dhaka);
         }
 
-
-
-
-        // console.log(formData);
         axios.post(process.env.API_URL + "/client/products/" + id, formData, { headers: headers })
             .then(function (response) {
-                if (response?.status === 200) {
-                    Swal.fire({
-                        icon: "success",
-                        // title: "Oops...",
-                        text: "Product Update success",
-                    });
+                if (response?.data?.success) {
+                    showToast('Product update successfully!', 'success');
                     router.push("/product");
+                }else{
+                    showToast('Something went wrong!', 'error');
                 }
-
             })
             .catch(function (error) {
-                Swal.fire({
-                    icon: "error",
-                    // title: "Oops...",
-                    text: "Something went wrong",
-                });
+                showToast('Something went wrong!', 'error');
             });
-        // console.log(data);
-
-        reset();
+        // reset();
         setOpenSales(false)
     };
-    ;
 
     const [imageUrl, setImageUrl] = useState(main_image?.name);
 
@@ -137,13 +120,10 @@ const ProductUpdate = ({ id, category }) => {
             setImageUrl(URL.createObjectURL(selectedImage));
         }
     }, [selectedImage]);
-    console.log(products)
-
 
     return (
         <div>
             <div onClick={handleOpenSales}> <FiEdit></FiEdit> </div>
-
             <Modal
                 open={openSales}
                 onClose={handleCloseSales}
@@ -163,7 +143,6 @@ const ProductUpdate = ({ id, category }) => {
                                     <p>Shop Products Update </p>
                                 </div>
                             </div>
-
                             <div className="Form">
                                 <div className="CustomeInput">
                                     <label>Product Name <span>*</span></label>
@@ -178,7 +157,6 @@ const ProductUpdate = ({ id, category }) => {
                                         <span>This Product Name required</span>
                                     )}
                                 </div>
-
                                 <div className="CustomeInput">
                                     <label>Selling Price <span>*</span></label>
                                     <TextField
@@ -219,7 +197,6 @@ const ProductUpdate = ({ id, category }) => {
                                         <span>This Product Name required</span>
                                     )}
                                 </div>
-
                                 <div className="CustomeInput">
                                     <label>Category Name <span>*</span></label>
 
@@ -239,29 +216,21 @@ const ProductUpdate = ({ id, category }) => {
                                             })
                                             : null}
                                     </select>
-
                                 </div>
 
                                 {/* DelivaryCharge */}
                                 <div className="TopSellingProducts">
-
                                     <div className="DashboardForm">
-
                                         <div className="DelivaryCharge">
-
                                             <div className="Item">
-
                                                 <label> Delivery Charge <span>*</span></label>
-
-                                                <select defaultValue={ delivery !== "paid"? "free" : "paid"} name="" onChange={(e) => {
+                                                <select defaultValue={delivery !== "paid" ? "free" : "paid"} name="" onChange={(e) => {
                                                     setDelivery(e.target.value);
                                                 }}>
                                                     <option value="free" >Free Delivery Charge</option>
                                                     <option value="paid">Paid Delivery Charge</option>
                                                 </select>
-
                                             </div>
-
                                             {delivery === "paid" && <div className="Item">
 
                                                 <div className="DelivaryItem d_flex d_justify">
@@ -273,7 +242,6 @@ const ProductUpdate = ({ id, category }) => {
                                                         label="Delivery Charge in Dhaka"
                                                         variant="outlined"
                                                     />
-
                                                     <TextField
                                                         onChange={(e) => setOutDhaka(e.target.value)}
                                                         defaultValue={products?.outside_dhaka}
@@ -281,26 +249,12 @@ const ProductUpdate = ({ id, category }) => {
                                                         label="Delivery Charge out of Dhaka"
                                                         variant="outlined"
                                                     />
-
                                                 </div>
-
                                             </div>}
-
-
-
                                         </div>
-
                                     </div>
-
-
-
-
                                 </div>
-
                                 <div className="CustomeInput">
-
-
-
                                     <div className="Item Upload">
                                         <label>Product  Image <span>*</span></label>
                                         <p>Image must be a file of type: <span>png, jpg, jpeg</span></p>
@@ -323,8 +277,6 @@ const ProductUpdate = ({ id, category }) => {
                                                 <img src={imageUrl} alt={selectedImage.name} height="100px" />
                                             </Box>
                                         )}
-
-
                                         {
                                             imageUrl && selectedImage ? "" : <Box mt={2} textAlign="center">
                                                 <div>Image Preview:</div>
@@ -332,15 +284,7 @@ const ProductUpdate = ({ id, category }) => {
                                             </Box>
                                         }
                                     </div>
-
-
-
                                 </div>
-
-
-
-
-
                                 <div className="CustomeInput">
                                     <div className="DuelButton">
                                         <Button type="submit">Update</Button>

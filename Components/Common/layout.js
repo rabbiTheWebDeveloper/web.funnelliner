@@ -1,6 +1,4 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { headers } from '../../pages/api';
 import Menubar from './Menubar';
 import Sidebar from './Sidebar';
 
@@ -19,8 +17,6 @@ export default function Layout({ children, busInfo }) {
   //     } catch (err) {
   //         // console.log(err)
   //     }
-
-
   // };  
 
   useEffect(() => {
@@ -34,6 +30,8 @@ export default function Layout({ children, busInfo }) {
   // useEffect(() => {
   //     handleFetchBusInfo();
   // }, []);
+
+
 
   if (isWindowExist !== false) {
     return (

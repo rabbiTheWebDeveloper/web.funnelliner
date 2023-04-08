@@ -1,6 +1,5 @@
 import axios from "axios";
 import Cookies from 'js-cookie';
-import getConfig from 'next/config';
 import { Fragment, useEffect, useState } from "react";
 import GraphChart from "../Components/HomePage/GraphChart";
 import NoticeBoard from "../Components/HomePage/NoticeBoard";
@@ -9,6 +8,7 @@ import TotalOrder from "../Components/HomePage/TotalOrder";
 import WebsiteLink from "../Components/HomePage/WebsiteLink";
 import withAuth from "../hook/PrivateRoute";
 import { headers } from "./api";
+import getConfig from 'next/config';
 
 const index = () => {
     const [allProduct, setAllProduct] = useState([]);
@@ -21,12 +21,12 @@ const index = () => {
         try {
             let data = await axios({
                 method: "get",
-                url: `${apiUrl}/client/order?type=confirmed`,
+                url: `${apiUrl}/client/orders`,
                 headers: headers,
             });
 
             // console.log("setSalesTarget",data.data.data)
-            setAllProduct(data?.data);
+            setAllProduct(data?.data?.data);
         } catch (err) {
             console.log(err)
         }
@@ -37,8 +37,8 @@ const index = () => {
         handleFetchSellsTarget();
     }, []);
 
-// console.log("Dashboard Order",allProduct )
 
+//
 const handleFetchBusInfo = async () => {
     try {
         let data = await axios({
@@ -68,7 +68,7 @@ useEffect(() => {
 }, []);
 
 
-console.log('Starting' ,allProduct)
+
 
     return (
         <Fragment>

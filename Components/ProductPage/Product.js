@@ -50,12 +50,7 @@ const Product = ({ category }) => {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage, setPerPage] = useState(6);
-
-
-    // const token = Cookies.get("token");
-    // const headers = {
-    //   Authorization: `Bearer ${token}`,
-    // };
+    
     useEffect(() => {
         axios
             .get(process.env.API_URL + "/client/products", { headers: headers })
@@ -65,8 +60,6 @@ const Product = ({ category }) => {
                 setIsLoading(false);
             })
             .catch(function (error) {
-
-                // console.log("Page  System", error.response.data)
                 if (error.response.data.api_status === "401") {
                     window.location.href = "/login"
                     Cookies.remove("token");
@@ -122,11 +115,8 @@ const Product = ({ category }) => {
     for (let i = 1; i <= Math.ceil(products.length / perPage); i++) {
         pageNumbers.push(i);
     }
-    // console.log(pageNumbers);
-
+   
     const paginate = (pageNumber, value) => setCurrentPage(value);
-    // console.log("Product list", products);
-
     const [productSearchValue, setProductSearchValue] = useState("")
     const [filterProducts, setFilterProducts] = useState([])
     const handleChangeSearchBox = (e) => {
@@ -292,8 +282,8 @@ const Product = ({ category }) => {
                                                         );
                                                     })}
 
-                                                {/* filter product */}
 
+                                                {/* filter product */}
                                                 {
                                                     productSearchValue && filterProducts?.map((product, index) => {
                                                         return (

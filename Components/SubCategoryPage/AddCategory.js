@@ -5,25 +5,17 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { headers } from "../../pages/api";
+import { useToast } from "../../hook/useToast";
 
 
 const AddCategory = () => {
+    const showToast = useToast()
     const [selectedImage, setSelectedImage] = useState(null);
-
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const router = useRouter();
-
-    // const token =Cookies.get('token')
-    // // console.log(token)
-    // const headers = {
-    //   Authorization: `Bearer ${token}`,
-    // };fdf
-
     const onCategorySubmit = (data) => {
-
         data.parent_id = "0";
         data.description = "";
-
         data.status = "1";
         const formData = new FormData();
         formData.append('category_image', selectedImage);
@@ -31,21 +23,13 @@ const AddCategory = () => {
         formData.append('description', data.description);
         formData.append('parent_id', data.parent_id);
         formData.append('status', data.status);
-        // console.log(formData);
-
-        axios.post(process.env.API_URL + "/client/categories", formData, { headers: headers }
-        )
-
+        axios.post(process.env.API_URL + "/client/categories", formData, { headers: headers })
             .then(function (response) {
-
-                //  console.log(response)
-                // console.log(response.data.msg);
-                Swal.fire(
-                    'Category Add!',
-                    response?.data?.msg,
-                    'success'
-                )
-                router.push("/category-list");
+                console.log("response", response)
+                if (response?.data?.success) {
+                    showToast(response?.data?.message, "success")
+                    router.push("/category-list");
+                }
             })
             .catch(function (error) {
                 if (error?.response?.status === 422) {

@@ -1,7 +1,7 @@
-import { Collapse, List, ListItemButton } from "@mui/material";
+import { Badge, Collapse, List, ListItemButton } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from 'next/router';
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineFileDone, AiOutlineHome, AiOutlineShoppingCart, AiOutlineStock } from "react-icons/ai";
 import { BiMessageRoundedDots, BiSupport } from "react-icons/bi";
 import { BsPlug, BsShop } from "react-icons/bs";
@@ -11,7 +11,8 @@ import { GiWorld } from "react-icons/gi";
 import { HiCurrencyDollar } from "react-icons/hi";
 import { RiSettings2Line, RiTeamLine } from "react-icons/ri";
 import { TbTruckDelivery } from "react-icons/tb";
-import { shopId } from "../../pages/api";
+import SuperFetch from "../../hook/Axios";
+import { headers, shopId } from "../../pages/api";
 
 const Sidebar = ({ busInfo }) => {
 
@@ -20,6 +21,7 @@ const Sidebar = ({ busInfo }) => {
     const [openStock, setOpenStock] = React.useState(false);
     const [openTemplate, setOpenTemplate] = React.useState(false);
     const [openMyTemplate, setOpenMyTemplate] = React.useState(false);
+    const [pendingOrderCount, setPendingOrderCount] = useState(0)
 
 
     // handleCategory
@@ -41,6 +43,15 @@ const Sidebar = ({ busInfo }) => {
     const handleMyTemplate = () => {
         setOpenMyTemplate(!openMyTemplate);
     };
+
+    useEffect(() => {
+        SuperFetch.get('client/pending-order/count', {headers: headers})
+            .then(res => {
+                setPendingOrderCount(res.data.data)
+            }).catch(error => {
+
+        })
+    }, [])
 
     return (
         <>
@@ -89,9 +100,10 @@ const Sidebar = ({ busInfo }) => {
                                 href={"/order"}
                                 className={router.pathname === "/order" ? "active" : ""}
                             >
-                                {" "}
                                 <AiOutlineFileDone /> Orders
+                                <Badge badgeContent={pendingOrderCount} color="primary" style={{marginRight: '10px', marginTop: 0}}/>
                             </Link>
+
                         </ListItemButton>
                     </div>
 
@@ -313,7 +325,7 @@ const Sidebar = ({ busInfo }) => {
                     <div className='MenuItem'>
                         <ListItemButton>
                             <Link href={'/bkash-marcent'} className={router.pathname === "/bkash-marcent" ? "active" : ""}>
-                                <img src="/images/bkash-marcent.png" alt="" /> Bkash Merchant Account
+                                <img src="/images/bkash-marcent.png" alt="" /> Bkash Merchant
                             </Link>
                         </ListItemButton>
                     </div>

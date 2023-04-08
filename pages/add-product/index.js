@@ -1,23 +1,12 @@
-;
-import Category from '../../Components/CategoryPage/Category';
+import AddProduct from '../../Components/AddProduct/AddProduct';
 import withAuth from '../../hook/PrivateRoute';
-
-
 const index = () => {
-
-
     return (
-
-
         <>
-
-           
-            <Category></Category>
+            <AddProduct/>
 
         </>
-
     )
-
 }
 
 export default withAuth(index, {

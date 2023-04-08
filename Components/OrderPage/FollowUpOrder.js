@@ -9,23 +9,17 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { baseUrl } from "../../constant/constant";
 import { headers } from "../../pages/api";
+import { useGetOrdersQuery } from "../../redux/features/api/orderApiSlice";
 import Note from "./Note";
 
-const options = [
-  // { value: "pending", label: "pending", id: 1 },
-  { value: "Confirmed", label: "Confirmed", id: 1 },
-  { value: "Cancelled", label: "Cancelled", id: 2 },
-  // { value: "Shipped", label: "Shipped", id: 3 },
-  // { value: "Delivered", label: "Delivered", id: 4 },
-  // { value: "Return", label: "Order Return", id: 5 },
-  // { value: "Follow Up", label: "Follow Up", id: 6 },
-];
+
 
 const handleClose = () => {
   setAnchorEl(null);
 };
 
 const FollowUpOrder = ({ searchQuery, allProducts, show, advanceStatus }) => {
+  const { data, isLoading, isError } = useGetOrdersQuery("follow_up");
   const [searchQueryString, setSearchQueryString] = useState(searchQuery);
   useEffect(() => {
     setSearchQueryString(searchQuery);
@@ -38,7 +32,7 @@ const FollowUpOrder = ({ searchQuery, allProducts, show, advanceStatus }) => {
   const [perPage, setPerPage] = useState(25);
   const [page, setPage] = useState(1);
   const [selectedOption, setSelectedOption] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [updateData, setUpdateData] = useState("");
 
   const [openStock, setOpenStock] = useState(false);
@@ -172,14 +166,14 @@ const FollowUpOrder = ({ searchQuery, allProducts, show, advanceStatus }) => {
 
   const indexOfLastProducts = currentPage * perPage;
   const indexOfFirstProducts = indexOfLastProducts - perPage;
-  const currentProduct = products.slice(
+  const currentProduct = data?.data?.slice(
     indexOfFirstProducts,
     indexOfLastProducts
   );
 
   const pageNumbers = [];
   if (searchQueryString?.length === 0) {
-    for (let i = 1; i <= Math.ceil(products?.length / perPage); i++) {
+    for (let i = 1; i <= Math.ceil( data?.data?.length / perPage); i++) {
       pageNumbers.push(i);
     }
   } else if (searchQueryString?.length > 0) {
@@ -559,10 +553,10 @@ const FollowUpOrder = ({ searchQuery, allProducts, show, advanceStatus }) => {
                     </Box>
                   </td>
                 </tr>
-              ) : allProducts?.length > 0 ? (
+              ) : filterProducts?.length > 0 ? (
                 <>
                   <tbody>
-                    {allProducts?.map((product, index) => {
+                    {filterProducts?.map((product, index) => {
                       return (
                         <tr key={product.order_no} product={product}>
                           <td>{/* <Checkbox /> */}</td>

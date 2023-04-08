@@ -20,7 +20,7 @@ import { headers, shopId } from "../../pages/api";
 
 const publicIp = require("react-public-ip");
 
-const Menubar = (props) => {
+const Menubar = (props ) => {
     const { busInfo } = props
 
 

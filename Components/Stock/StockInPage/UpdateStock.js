@@ -112,11 +112,6 @@ const UpdateStock = ({ productId }) => {
                                                         <FiEdit />
                                                     </div>
                                                 </div>
-                                                <p>Note for payment receive : Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                    consequat.</p>
                                                 <div className="Item">
                                                     <Button className='Update' type="submit">Update</Button>
                                                 </div>

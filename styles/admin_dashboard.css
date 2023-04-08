@@ -159,8 +159,8 @@ button.bg:hover {
 }
 
 /* .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
-background-color: rgba(0, 0, 0, 0.2) !important;
-backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  backdrop-filter: blur(4px);
 } */
 
 .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
@@ -190,7 +190,7 @@ backdrop-filter: blur(4px);
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-Login
+  Login
 --------------------------------------------------------------------------------------------------------------------------- */
 .Login {
   display: flex;
@@ -237,11 +237,6 @@ Login
   position: relative;
 }
 
-.SalesTargetModal .CustomeInput img {
-  height: 200px;
-  width: auto;
-}
-
 .CustomeInput .eye {
   position: absolute;
   top: 56px;
@@ -277,17 +272,21 @@ Login
   height: 20px;
 }
 
-/* Bulk Sms */
-.CustomeInput .Item.CheckSMSList input {
-  width: 15px;
-  height: 15px;
+.TopSellingProducts
+  .DashboardForm
+  .CustomeInput
+  .Item.Multiline
+  .css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root {
+  padding: 0;
 }
 
-.CustomeInput .Item.CheckSMSList label {
-  margin-bottom: 0;
-  margin-left: 10px;
-  font-weight: 400;
-  font-size: 15px;
+.TopSellingProducts
+  .DashboardForm
+  .CustomeInput
+  .Item.Multiline
+  textarea#outlined-multiline-static {
+  background: var(--input_bg);
+  border-radius: 10px;
 }
 
 .TopSellingProducts
@@ -424,7 +423,7 @@ Login
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-Sidebar
+  Sidebar
 --------------------------------------------------------------------------------------------------------------------------- */
 .Sidebar {
   width: 250px;
@@ -578,7 +577,7 @@ Sidebar
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-Menubar
+  Menubar
 --------------------------------------------------------------------------------------------------------------------------- */
 .MenubarContent {
   background: #ffffff;
@@ -712,7 +711,7 @@ Menubar
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-HomePage
+  HomePage
 --------------------------------------------------------------------------------------------------------------------------- */
 
 /* NoticeBoard */
@@ -826,7 +825,7 @@ HomePage
   position: relative;
   margin-bottom: 30px;
   overflow: hidden;
-  height: 220px;
+  height: 200px;
   border: 1px solid var(--bg_color);
 }
 
@@ -898,8 +897,7 @@ HomePage
 
 .SalesTarget.TotalOrderItem .Main {
   margin: 0;
-  line-height: 0;
-  margin-top: 10px;
+  line-height: 65px;
 }
 
 .TotalOrderItem .Main h3 {
@@ -910,7 +908,7 @@ HomePage
 }
 
 .TotalOrderItem .Main h3 span {
-  /* font-size: 40px; */
+  font-size: 40px;
 }
 
 .TotalOrderItem .Main ul {
@@ -1017,17 +1015,6 @@ HomePage
   overflow-y: auto;
 }
 
-.SalesTargetModal .Item button {
-  background: var(--bg_color);
-  color: var(--white);
-  padding: 5px 20px;
-}
-
-.SalesTargetModal .Item button:last-child {
-  margin-left: 10px;
-  background: #f01b1b;
-}
-
 .SalesTargetModal .svg {
   margin-right: 15px;
 }
@@ -1106,10 +1093,6 @@ HomePage
   font-weight: 700;
 }
 
-.SalesTargetDailyTarget li strong {
-  font-size: 14px;
-}
-
 .SalesTargetDailyTarget li span:last-child {
   padding: 3px 10px;
   background: var(--bg_color);
@@ -1182,7 +1165,6 @@ HomePage
   border: none;
   padding: 10px 20px;
 }
-
 .FollowUpOrderFilterSection {
   display: flex;
   justify-content: flex-end;
@@ -1212,6 +1194,7 @@ HomePage
 }
 
 .FollowUpOrderFilter .InputDate .Item {
+  margin-left: 10px;
   margin-top: 10px;
 }
 
@@ -1563,7 +1546,7 @@ HomePage
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-DashboardSetting
+  DashboardSetting
 --------------------------------------------------------------------------------------------------------------------------- */
 .DashboardSetting {
   padding: 30px 0;
@@ -1572,7 +1555,6 @@ DashboardSetting
 .DashboardSettingTabs {
   margin-top: 30px;
   overflow: hidden;
-  padding-bottom: 60px;
 }
 
 .DashboardSetting .MuiBox-root {
@@ -1622,45 +1604,6 @@ DashboardSetting
 
 .MuiPagination-ul .MuiPaginationItem-root {
   padding: 10px 20px;
-}
-
-.InvoiceFormate .MuiPagination-ul .MuiPaginationItem-root {
-  color: var(--text_color);
-}
-
-.InvoiceFormate .MuiPagination-ul {
-  margin-top: 30px;
-  cursor: pointer;
-}
-
-/* BulkSmsOrderPopUp */
-.BulkSmsOrderPopUp .MuiFormControl-root {
-  background: none;
-}
-
-.BulkSmsOrderPopUp p {
-  margin-top: 5px;
-  margin-bottom: 20px;
-}
-
-.BulkSmsOrderPopUp .MuiSwitch-switchBase .MuiSwitch-thumb {
-  width: 20px;
-  height: 20px;
-}
-
-.BulkSmsOrderPopUp .MuiFormControl-root .MuiFormGroup-root {
-  display: flow-root;
-}
-
-.BulkSmsOrderPopUp .MuiFormControl-root .MuiFormControlLabel-root {
-  width: 48%;
-}
-
-.BulkSmsOrderPopUp .MuiTypography-root {
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--bg_color2);
-  font-weight: 700;
 }
 
 .DashboardSetting .WebPages .AddNewOrder {
@@ -1767,7 +1710,7 @@ DashboardSetting
   font-weight: 400;
   font-size: 14px;
   border-radius: 10px;
-  padding: 14px 15px;
+  padding: 18px 15px;
   text-transform: capitalize;
   color: var(--text_color);
   width: 100%;
@@ -1864,7 +1807,7 @@ DashboardSetting
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-WebsiteSetting
+  WebsiteSetting
 --------------------------------------------------------------------------------------------------------------------------- */
 .WebsiteSettingCashOnDelivary {
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.135216);
@@ -2219,7 +2162,7 @@ WebsiteSetting
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-Order
+  Order
 --------------------------------------------------------------------------------------------------------------------------- */
 .Order .FilterItem {
   margin-left: 30px;
@@ -2291,8 +2234,8 @@ Order
 }
 
 /* .MuiPaper-root {
-min-width: 150px;
-max-width: 300px;
+  min-width: 150px;
+  max-width: 300px;
 } */
 
 .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
@@ -2382,17 +2325,6 @@ max-width: 300px;
   font-weight: 600;
   text-align: center;
   padding: 8px 5px;
-}
-
-.ProductTable table td p {
-  color: var(--bg_color2);
-  font-size: 14px;
-  line-height: 20px;
-  margin-top: 0;
-}
-
-.ProductTable table td p span {
-  font-weight: 700;
 }
 
 .ProductTable table td .DropDown .select__color {
@@ -2497,8 +2429,6 @@ max-width: 300px;
 
 .ProductTable table td .MuiButtonBase-root {
   padding: 0;
-  line-height: 10px;
-  margin: 0;
 }
 
 .ProductTable table td select {
@@ -2516,14 +2446,7 @@ max-width: 300px;
   align-items: center;
   justify-content: center;
   /* height: 100%; */
-  padding: 15px 10px;
-}
-
-.Stock .ProductTable table td.EditViewDelete button {
-  background: var(--bg_color);
-  color: var(--white);
-  padding: 8px 20px;
-  border-radius: 5px;
+  padding: 16px 10px;
 }
 
 .MoveToComplete a.AddProduct,
@@ -2590,17 +2513,8 @@ max-width: 300px;
 
 .ProductTable table .EditViewDelete a {
   font-size: 25px;
-  /* margin-left: 20px; */
+  margin-left: 20px;
   color: var(--bg_color2);
-  margin: 0 5px;
-}
-
-.ProductTable table .EditViewDelete .ButtonEdit {
-  font-size: 25px;
-  color: var(--bg_color2);
-  line-height: 25px;
-  padding: 0;
-  margin: 0;
 }
 
 .ProductTable table .EditViewDelete .UpdateStock {
@@ -2756,7 +2670,7 @@ max-width: 300px;
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-TotalSMSSent BulkSms
+  TotalSMSSent BulkSms
 --------------------------------------------------------------------------------------------------------------------------- */
 .TotalSMSSent .Main {
   margin: 35px 0;
@@ -2803,8 +2717,7 @@ TotalSMSSent BulkSms
   margin-left: 10px;
 }
 
-.TotalSMSSent .SMSBalance .Main li .MuiButtonBase-root,
-.TotalSMSSent .SMSBalance .Main li a {
+.TotalSMSSent .SMSBalance .Main li .MuiButtonBase-root {
   background: var(--bg_color);
   color: var(--white);
   font-size: 16px;
@@ -2814,11 +2727,6 @@ TotalSMSSent BulkSms
   margin-top: 10px;
   padding: 5px;
   text-transform: capitalize;
-}
-
-.TotalSMSSent .SMSBalance .Main li .MuiButtonBase-root a {
-  margin-top: 0;
-  text-decoration: none;
 }
 
 /* TotalSMSSentRight */
@@ -2959,10 +2867,6 @@ TotalSMSSent BulkSms
   padding-bottom: 0;
 }
 
-.TopSellingProducts.DashboardSetting.Order.BulkSMSSection {
-  padding-bottom: 30px;
-}
-
 .UseTamplate {
   margin-top: 20px;
 }
@@ -2977,21 +2881,8 @@ TotalSMSSent BulkSms
   margin-right: 20px;
 }
 
-.BulkSms .CustomeInput.XLFile input {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-  background: var(--white);
-  border-radius: 10px;
-  width: 100%;
-  border: none;
-  padding: 15px 20px;
-  width: -webkit-fill-available;
-  height: auto;
-}
-
 /* ---------------------------------------------------------------------------------------------------------------------------
-SupportTicketSection
+  SupportTicketSection
 --------------------------------------------------------------------------------------------------------------------------- */
 .SupportTicketSection {
   padding-bottom: 0;
@@ -3046,7 +2937,7 @@ SupportTicketSection
 }
 
 /* .TicketConversationItem:nth-child(even){
-background: var(--input_bg);
+  background: var(--input_bg);
 } */
 
 .TicketConversationItem h4 {
@@ -3100,7 +2991,7 @@ background: var(--input_bg);
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-Menubar
+  Menubar
 --------------------------------------------------------------------------------------------------------------------------- */
 .CourierItem {
   background: #f6f6f6;
@@ -3384,7 +3275,7 @@ Plugin
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-WebPages
+  WebPages
 --------------------------------------------------------------------------------------------------------------------------- */
 .WebPages .MuiButtonBase-root a {
   font-size: 16px;
@@ -3469,10 +3360,10 @@ WebPages
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-Subscription
+  Subscription
 --------------------------------------------------------------------------------------------------------------------------- */
 /* h4 {
-color: #fff;
+  color: #fff;
 } */
 .TopSellingProducts.Subscription .TotalOrderItem {
   margin-top: 30px;
@@ -3569,7 +3460,7 @@ color: #fff;
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-InvoiceOne
+  InvoiceOne
 --------------------------------------------------------------------------------------------------------------------------- */
 .InvoiceOne {
   width: 780px;
@@ -3590,9 +3481,7 @@ InvoiceOne
 }
 
 .InvoiceOneContent .Logo img {
-  height: 100px;
-  width: 100px;
-  object-fit: contain;
+  height: 80px;
 }
 
 .InvoiceOneContent .Header ul li {
@@ -3619,7 +3508,6 @@ InvoiceOne
   font-size: 40px;
   line-height: 50px;
 }
-
 .InvoiceOneContent .Title h5 {
   font-size: 20px;
   line-height: 40px;
@@ -3777,41 +3665,41 @@ InvoiceOne
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-InvoiceThree
+  InvoiceThree
 --------------------------------------------------------------------------------------------------------------------------- */
 /* .Invoice__3 {
-width: 780px;
-height: 1100px;
-overflow: hidden;
-margin: 0 auto;
--webkit-print-color-adjust: exact;
-position: relative;
-padding-bottom: 30px;
+    width: 780px;
+    height: 1100px;
+    overflow: hidden;
+    margin: 0 auto;
+    -webkit-print-color-adjust: exact;
+    position: relative;
+    padding-bottom: 30px;
 }
 
 .Invoice__3 .Logo{
-text-align: center;
+    text-align: center;
 }
 
 .Invoice__3 .Logo img{
-height: 80px;
-width: auto;
+    height: 80px;
+    width: auto;
 } */
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-Menubar
+  Menubar
 --------------------------------------------------------------------------------------------------------------------------- */
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-Menubar
+  Menubar
 --------------------------------------------------------------------------------------------------------------------------- */
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-Menubar
+  Menubar
 --------------------------------------------------------------------------------------------------------------------------- */
 
 /* ---------------------------------------------------------------------------------------------------------------------------
-Menubar
+  Menubar
 --------------------------------------------------------------------------------------------------------------------------- */
 .css-dqqtgx .MuiAlert-icon {
   display: none;
@@ -3970,7 +3858,7 @@ span.MuiSkeleton-root.MuiSkeleton-text.MuiSkeleton-pulse.css-z7erpk {
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------
-START Otp PART
+    START Otp PART
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
 .Otp {
   background: #894bca;
@@ -4087,15 +3975,26 @@ START Otp PART
 .ql-editor {
   min-height: 500px;
 }
-
 .submitButtonForPages {
   text-align: center;
   margin: 0 auto;
-  margin-top: 10px;
 }
 
-.ql-toolbar.ql-snow + .ql-container.ql-snow {
-  border-radius: 0 0 20px 20px;
+.filterActive {
+  background-color: #894bca !important;
+  border-color: #894bca !important;
+  color: #fff !important;
+}
+
+.nice-dates-popover {
+  right: 2%;
+}
+.nice-dates-navigation,
+.nice-dates-day {
+  color: #9a68cc !important;
+}
+.nice-dates-day:before {
+  background-color: #894bca !important;
 }
 
 .quill {
@@ -4446,6 +4345,19 @@ START Otp PART
 }
 
 /* AccountDashboard */
+.AccountDashboard .Selector.d_flex {
+  justify-content: center;
+}
+
+.AccountDashboard .Selector.d_flex .date-range input {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 2px solid var(--border_color);
+}
+
+.AccountDashboard .Selector.d_flex .nice-dates-popover {
+  max-width: 350px;
+}
 
 .AccountDashboard .HeaderItemContent {
   margin-top: 30px;
@@ -4639,6 +4551,10 @@ START Otp PART
   line-height: 24px;
 }
 
+.AccountTable .Filter .FilterItem .Dropdown button a {
+  color: var(--white);
+}
+
 .AccountTable .Filter .FilterItem .Dropdown button svg {
   font-size: 20px;
   margin-left: 10px;
@@ -4696,11 +4612,11 @@ START Otp PART
   margin-right: 30px;
 }
 
-.AccountPdfReport .FilterButton{
+.AccountPdfReport .FilterButton {
   margin-left: 20px;
 }
 
-.AccountPdfReport .FilterButton button{
+.AccountPdfReport .FilterButton button {
   font-size: 16px;
   line-height: 24px;
   border: 1px solid var(--bg_color);
@@ -4709,17 +4625,18 @@ START Otp PART
   color: var(--bg_color);
 }
 
-.AccountPdfReport .FilterButton button.active{
+.AccountPdfReport .FilterButton button.active {
   background: var(--bg_color);
   color: var(--white);
 }
 
-.AccountPdfReport .DownloadPdf{
+.AccountPdfReport .DownloadPdf {
   text-align: right;
   margin-top: 30px;
+  margin-bottom: 100px;
 }
 
-.AccountPdfReport .DownloadPdf button{
+.AccountPdfReport .DownloadPdf button {
   background: var(--bg_color);
   padding: 5px 30px;
   color: var(--white);
@@ -4727,9 +4644,29 @@ START Otp PART
   line-height: 24px;
 }
 
-.AccountPdfReport .DownloadPdf button svg{
+.AccountPdfReport .DownloadPdf button svg {
   font-size: 20px;
   margin-left: 10px;
+}
+
+.AccountPdfReport .FilterItem {
+  margin-right: 20px;
+}
+
+.AccountPdfReport .FilterItem .date-range input {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 2px solid var(--border_color);
+}
+
+.AccountPdfReport .nice-dates-popover {
+  max-width: 350px;
+}
+
+.AccountDashboard .FilterItem.CustomDate {
+  width: 350px;
+  position: relative;
+  text-align: left;
 }
 .SalesTargetModal .TopSellingProducts .DashboardForm {
   margin-top: 20px;

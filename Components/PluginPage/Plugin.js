@@ -103,7 +103,7 @@ const Plugin = () => {
                                                         </div>
 
                                                         <div className="text">
-                                                            <h4>Accounting <br /> Modules</h4>
+                                                            <h4>Fake Order <br /> Solution</h4>
 
                                                             <div className="DualButton">
                                                                 <Button>Active</Button>
@@ -130,12 +130,12 @@ const Plugin = () => {
                                                         </div>
 
                                                         <div className="text">
-                                                            <h4>Accounting <br /> Modules</h4>
+                                                            <h4>Fake Order <br /> Solution</h4>
 
                                                             <div className="DualButton">
                                                                 <Button className='Deactivated'>Deactivate</Button>
                                                             </div>
-                                                            <h6> <BsCheckLg/> You're almost done</h6>
+                                                            <h6> <BsCheckLg /> You're almost done</h6>
 
                                                         </div>
 
@@ -220,10 +220,10 @@ const Plugin = () => {
                                                         </div>
 
                                                         <div className="text">
-                                                            <h4>Accounting <br /> Modules</h4>
+                                                            <h4>Fake Order <br /> Solution</h4>
 
                                                             <div className="DualButton">
-                                                                <Button className='Install'>Installed <BsCheckAll/></Button>
+                                                                <Button className='Install'>Installed <BsCheckAll /></Button>
                                                             </div>
 
                                                         </div>
