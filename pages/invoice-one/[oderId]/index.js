@@ -71,7 +71,7 @@ const index = () => {
 
 
     const calculatePrice = invoice?.order_details?.reduce((prevVal, currentVal) => {
-        return prevVal + currentVal?.product?.price * currentVal?.product_qty
+        return prevVal + currentVal?.product?.price * currentVal?.quantity
     }, 0)
 
     const totalPrice = calculatePrice
@@ -151,7 +151,7 @@ const index = () => {
 
                                 <tbody>
 
-                                    {/* {order_details?.map((data, index) => {
+                                    {order_details?.map((data, index) => {
                                         return <tr key={data.order_id} >
                                             <td>
                                                 <h4>{index + 1}</h4>
@@ -162,10 +162,10 @@ const index = () => {
                                               
                                             </td>
                                             <td>{data?.price}</td>
-                                            <td>{data?.product_qty}</td>
+                                            <td>{data?.quantity}</td>
                                             <td>{data?.price * data?.quantity}</td>
                                         </tr>
-                                    })} */}
+                                    })}
 
 
                                 </tbody>
@@ -187,13 +187,13 @@ const index = () => {
                             <div className="Right">
 
                                 <ul>
-                                    <li>SubTotal: BDT {invoice?.pricing?.grand_total}</li>
-                                    <li>Discount: BDT {invoice?.pricing?.discount}</li>
-                                    <li>Advance: BDT {invoice?.pricing?.advanced}</li>
-                                    <li>Shipping Cost: BDT {invoice?.pricing?.shipping_cost}</li>
+                                    <li>SubTotal: BDT {invoice?.grand_total}</li>
+                                    <li>Discount: BDT {invoice?.discount}</li>
+                                    <li>Advance: BDT {invoice?.advanced}</li>
+                                    <li>Shipping Cost: BDT {invoice?.shipping_cost}</li>
                                 </ul>
 
-                                <h3>Total Due: BDT {invoice?.pricing?.due}</h3>
+                                <h3>Total Due: BDT {invoice?.due}</h3>
 
                             </div>
 
