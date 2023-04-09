@@ -71,12 +71,12 @@ const FollowUpOrder = ({ searchQuery, allProducts, show, advanceStatus }) => {
     //     .then(function (response) {
     //         // handle success
     //         let allProduct = response?.data?.data;
-    const userProduct = Array.from(allProducts).filter(
+    const userProduct = data?.data?.filter(
       (word) => word?.order_status == "follow_up"
     );
     setProducts(userProduct);
     setFilterProducts(userProduct);
-    setIsLoading(false);
+    // setIsLoading(false);
     // });
   }, [updateData]);
 
