@@ -6,15 +6,10 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { headers } from "../../pages/api";
-import { useGetOrdersQuery } from "../../redux/features/api/orderApiSlice";
+import { useGetOrdersQuery } from "../../redux/features/order/orderApi";
 
-const options = [
-    { value: "Cancelled", label: "Cancelled", id: 2 },
-    { value: "Shipped", label: "Shipped", id: 3 },
-    { value: "Delivered", label: "Delivered", id: 4 },
-    { value: "Return", label: "Order Return", id: 5 },
-    { value: "Follow Up", label: "Follow Up", id: 6 },
-];
+
+
 
 const handleClose = () => {
     setAnchorEl(null);

@@ -23,7 +23,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { headers } from "../../pages/api";
-import { useGetOrdersQuery } from "../../redux/features/api/orderApiSlice";
+import { useGetOrdersQuery } from "../../redux/features/order/orderApi";
 import CancelledOrder from "./CancelledOrder";
 import ConfirmedOrder from "./ConfirmedOrder";
 import DelivereOrder from "./DelivereOrder";

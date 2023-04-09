@@ -9,8 +9,9 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { baseUrl } from "../../constant/constant";
 import { headers } from "../../pages/api";
-import { useGetOrdersQuery } from "../../redux/features/api/orderApiSlice";
+import { useGetOrdersQuery } from "../../redux/features/order/orderApi";
 import Note from "./Note";
+;
 
 
 
@@ -71,12 +72,12 @@ const FollowUpOrder = ({ searchQuery, allProducts, show, advanceStatus }) => {
     //     .then(function (response) {
     //         // handle success
     //         let allProduct = response?.data?.data;
-    const userProduct = Array.from(allProducts).filter(
+    const userProduct = data?.data?.filter(
       (word) => word?.order_status == "follow_up"
     );
     setProducts(userProduct);
     setFilterProducts(userProduct);
-    setIsLoading(false);
+    // setIsLoading(false);
     // });
   }, [updateData]);
 

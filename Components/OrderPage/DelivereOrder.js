@@ -7,15 +7,10 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { baseTest } from "../../constant/constant";
 import { headers } from "../../pages/api";
-import { useGetOrdersQuery } from "../../redux/features/api/orderApiSlice";
+import { useGetOrdersQuery } from "../../redux/features/order/orderApi";
 
-const options = [
-    // { value: "Cancelled", label: "Cancelled", id: 2 },
-    // { value: "Shipped", label: "Shipped", id: 3 },
-    { value: "Delivered", label: "Delivered", id: 4 },
-    { value: "Return", label: "Order Return", id: 5 },
-    { value: "Follow Up", label: "Follow Up", id: 6 },
-];
+
+
 
 const handleClose = () => {
     setAnchorEl(null);
@@ -153,29 +148,6 @@ const DelivereOrder = ({ searchQuery, allProducts, advanceStatus }) => {
             <div className="Pending">
                 <div className="MoveToComplete">
 
-                    {/* <div className="DropDown">
-<PopupState variant="popover" popupId="DropDown">
-{(popupState) => (
-<>
-<Button {...bindTrigger(popupState)}>
-<h6 className="d_flex">
-Delivered
-<div className="svg">
-<AiFillCaretDown />
-</div>
-</h6>
-</Button>
-
-<Menu {...bindMenu(popupState)}>
-<MenuItem onClick={handleClose}>Redex</MenuItem>
-<MenuItem onClick={handleClose}>Pathao Parcel</MenuItem>
-<MenuItem onClick={handleClose}>E-Courier</MenuItem>
-<MenuItem onClick={handleClose}>Add Courier</MenuItem>
-</Menu>
-</>
-)}
-</PopupState>
-</div> */}
                 </div>
                 {
                     searchQuery?.length === 0 ?

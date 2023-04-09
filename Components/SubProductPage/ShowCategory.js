@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BiReceipt } from "react-icons/bi";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
-import { baseTest } from "../../constant/constant";
 import { headers } from "../../pages/api";
+import { useCategoryQuery } from "../../redux/features/category/categoryApi";
 
 //  const colourOptions = [
 //   { value: 'orange', label: 'Orange', color: '#FF8B00' },
@@ -17,6 +17,7 @@ import { headers } from "../../pages/api";
 // ];
 
 const ShowCategory = ({ id }) => {
+    const { data, isLoading:bds, isError } = useCategoryQuery(id)
     const [products, setProducts] = useState([]);
     const [openSales, setOpenSales] = useState(false);
     const handleOpenSales = () => setOpenSales(true);
@@ -28,7 +29,7 @@ const ShowCategory = ({ id }) => {
                 setProducts(response.data.data);
             });
     }, [id]);
-    // console.log(products)
+    console.log("redux " ,data?.data)
     return (
         <div>
             <Link href='' onClick={handleOpenSales}> <MdOutlineRemoveRedEye /> </Link>

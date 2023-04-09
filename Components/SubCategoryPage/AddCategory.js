@@ -1,15 +1,14 @@
 import { Box, Button, Grid, TextField } from "@mui/material";
-import axios from "axios";
 import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import Swal from "sweetalert2";
-import { headers } from "../../pages/api";
 import { useToast } from "../../hook/useToast";
+import { useAddCategoryMutation } from "../../redux/features/category/categoryApi";
 
 
 const AddCategory = () => {
     const showToast = useToast()
+    const [addCategory ,{data,isLoading }] = useAddCategoryMutation()
     const [selectedImage, setSelectedImage] = useState(null);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const router = useRouter();
@@ -23,40 +22,45 @@ const AddCategory = () => {
         formData.append('description', data.description);
         formData.append('parent_id', data.parent_id);
         formData.append('status', data.status);
-        axios.post(process.env.API_URL + "/client/categories", formData, { headers: headers })
-            .then(function (response) {
-                console.log("response", response)
-                if (response?.data?.success) {
-                    showToast(response?.data?.message, "success")
-                    router.push("/category-list");
-                }
-            })
-            .catch(function (error) {
-                if (error?.response?.status === 422) {
-                    Swal.fire({
-                        icon: 'error',
-                        text: "This category already exist !",
-                    })
-                } else if (error?.response?.status === 400) {
-                    Swal.fire({
-                        icon: 'error',
-                        text: "Category image not select. ",
-                    })
-                }
-                else if (error?.message === "Network Error") {
-                    Swal.fire({
-                        icon: "error",
-                        text: "Category image is too big, file size exceeds to 1MB",
-                    });
-                }
-                else {
-                    Swal.fire({
-                        icon: 'error',
-                        text: "Something went wrong",
-                    })
-                }
+        
+        if(formData)addCategory(formData)
 
-            });
+        
+
+        // axios.post(process.env.API_URL + "/client/categories", formData, { headers: headers })
+        //     .then(function (response) {
+        //         console.log("response", response)
+        //         if (response?.data?.success) {
+        //             showToast(response?.data?.message, "success")
+        //             router.push("/category-list");
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         if (error?.response?.status === 422) {
+        //             Swal.fire({
+        //                 icon: 'error',
+        //                 text: "This category already exist !",
+        //             })
+        //         } else if (error?.response?.status === 400) {
+        //             Swal.fire({
+        //                 icon: 'error',
+        //                 text: "Category image not select. ",
+        //             })
+        //         }
+        //         else if (error?.message === "Network Error") {
+        //             Swal.fire({
+        //                 icon: "error",
+        //                 text: "Category image is too big, file size exceeds to 1MB",
+        //             });
+        //         }
+        //         else {
+        //             Swal.fire({
+        //                 icon: 'error',
+        //                 text: "Something went wrong",
+        //             })
+        //         }
+
+        //     });
 
     };
 
@@ -68,6 +72,7 @@ const AddCategory = () => {
             setImageUrl(URL.createObjectURL(selectedImage));
         }
     }, [selectedImage]);
+    console.log(data)
     return (
         <div className="DashboardTabsItem">
 

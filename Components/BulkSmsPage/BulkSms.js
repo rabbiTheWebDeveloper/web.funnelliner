@@ -4,30 +4,26 @@ import {
   FormControl,
   FormControlLabel,
   FormGroup,
-  FormHelperText,
-  FormLabel,
   Grid,
   InputLabel,
   Link,
   Select,
   Switch,
-  TextField,
+  TextField
 } from "@mui/material";
 import axios from "axios";
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiMessageRoundedDots } from "react-icons/bi";
-import { GoGraph } from "react-icons/go";
 import { FaClipboardList } from "react-icons/fa";
-import Swal from "sweetalert2";
-import { baseTest } from "../../constant/constant";
+import { GoGraph } from "react-icons/go";
 import { headers } from "../../pages/api";
 
-import OutlinedInput from "@mui/material/OutlinedInput";
-import MenuItem from "@mui/material/MenuItem";
-import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
+import ListItemText from "@mui/material/ListItemText";
+import MenuItem from "@mui/material/MenuItem";
+import OutlinedInput from "@mui/material/OutlinedInput";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -104,39 +100,39 @@ const BulkSms = () => {
   //   console.log(websiteSettingsData)
 
   const onSubmit = (data) => {
-    if (data.phone.length < 15) {
-      axios
-        .post(process.env.API_URL + "/client/single-sms-send", data, {
-          headers: headers,
-        })
-        .then(function (response) {
-          Swal.fire(response.data.message, "success");
-        })
-        .catch(function (error) {
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: error.msg,
-            footer: '<a href="">Why do I have this issue?</a>',
-          });
-        });
-    } else {
-      axios
-        .post(process.env.API_URL + "/client/multiple-sms-send", data, {
-          headers: headers,
-        })
-        .then(function (response) {
-          Swal.fire(response.data.message, "success");
-        })
-        .catch(function (error) {
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: error.msg,
-            footer: '<a href="">Why do I have this issue?</a>',
-          });
-        });
-    }
+    // if (data.phone.length < 15) {
+    //   axios
+    //     .post(process.env.API_URL + "/client/single-sms-send", data, {
+    //       headers: headers,
+    //     })
+    //     .then(function (response) {
+    //       Swal.fire(response.data.message, "success");
+    //     })
+    //     .catch(function (error) {
+    //       Swal.fire({
+    //         icon: "error",
+    //         title: "Oops...",
+    //         text: error.msg,
+    //         footer: '<a href="">Why do I have this issue?</a>',
+    //       });
+    //     });
+    // } else {
+    //   axios
+    //     .post(process.env.API_URL + "/client/multiple-sms-send", data, {
+    //       headers: headers,
+    //     })
+    //     .then(function (response) {
+    //       Swal.fire(response.data.message, "success");
+    //     })
+    //     .catch(function (error) {
+    //       Swal.fire({
+    //         icon: "error",
+    //         title: "Oops...",
+    //         text: error.msg,
+    //         footer: '<a href="">Why do I have this issue?</a>',
+    //       });
+    //     });
+    // }
 
     reset();
   };
@@ -170,6 +166,11 @@ const BulkSms = () => {
       [event.target.name]: event.target.checked,
     });
   };
+  // const handleChangeBulkSMSFetch=(data) =>{
+  //   console.log(data.target);
+
+  // }
+  console.log(personName)
 
   return (
     <>
@@ -219,39 +220,6 @@ const BulkSms = () => {
                         <GoGraph />
                         Total SMS Sent{" "}
                       </h5>
-
-                      {/* Dropdown */}
-                      {/* <div className='DropDown'>
-
-                                                <PopupState variant="popover" popupId="DropDown">
-                                                    {(popupState) => (
-
-                                                    <>
-                                                        
-                                                        <Button {...bindTrigger(popupState)}>
-
-                                                        <h6 className='d_flex'>
-                                                            Today
-                                                            <div className='svg'>
-                                                            <AiFillCaretDown />
-                                                            </div>
-                                                        </h6>
-
-                                                        </Button>
-
-                                                        <Menu {...bindMenu(popupState)}>
-                                                            <MenuItem onClick={handleClose}>Today</MenuItem>
-                                                            <MenuItem onClick={handleClose}>Yesterday</MenuItem>
-                                                            <MenuItem onClick={handleClose}>This Weak</MenuItem>
-                                                            <MenuItem onClick={handleClose}>This Month</MenuItem>
-                                                            <MenuItem onClick={handleClose}>Last Month</MenuItem>
-                                                        </Menu>
-
-                                                    </>
-                                                    )}
-                                                </PopupState>
-
-                                            </div> */}
                     </div>
 
                     <div className="Main">
@@ -277,39 +245,6 @@ const BulkSms = () => {
                         {" "}
                         <GoGraph /> Total SMS Cost (BDT){" "}
                       </h5>
-
-                      {/* Dropdown */}
-                      {/* <div className='DropDown'>
-
-                                                <PopupState variant="popover" popupId="DropDown">
-                                                    {(popupState) => (
-
-                                                    <>
-                                                        
-                                                        <Button {...bindTrigger(popupState)}>
-
-                                                        <h6 className='d_flex'>
-                                                            Today
-                                                            <div className='svg'>
-                                                            <AiFillCaretDown />
-                                                            </div>
-                                                        </h6>
-
-                                                        </Button>
-
-                                                        <Menu {...bindMenu(popupState)}>
-                                                            <MenuItem onClick={handleClose}>Today</MenuItem>
-                                                            <MenuItem onClick={handleClose}>Yesterday</MenuItem>
-                                                            <MenuItem onClick={handleClose}>This Weak</MenuItem>
-                                                            <MenuItem onClick={handleClose}>This Month</MenuItem>
-                                                            <MenuItem onClick={handleClose}>Last Month</MenuItem>
-                                                        </Menu>
-
-                                                    </>
-                                                    )}
-                                                </PopupState>
-
-                                            </div> */}
                     </div>
 
                     <div className="Main">
@@ -356,24 +291,7 @@ const BulkSms = () => {
 
                 {/* Right */}
                 <Grid item xs={12} sm={6} md={4}>
-                  {/* <div className="TotalSMSSentRight">
-                                <div className="Left d_flex">
-                                    <h5>
-                                        Get Your Sales <span>Boost Up</span> & Upto{" "}
-                                        <span>50% More Sales</span> With Us !
-                                        <img src="images/sms_overlay.png" alt=""/>
-                                    </h5>
-
-                                    <div className="img">
-                                        <img src="images/online_offline.png" alt=""/>
-                                    </div>
-                                </div>
-
-                                <h6>
-                                    Take your store to the hand of the customers{" "}
-                                    <Button>Join Us !</Button>
-                                </h6>
-                            </div> */}
+               
                   <div className="TotalOrderItem SMSBalance">
                     <div className="BulkSmsOrderPopUp">
                       <FormControl component="fieldset" variant="standard">
@@ -485,45 +403,7 @@ const BulkSms = () => {
 
                 {/* Right */}
                 <div className="Right d_flex">
-                  {/* item */}
-                  {/* <div className="FilterItem d_flex">
-
-                                        <h6>Filter By:</h6>
-
-                                        <div className="Dropdown">
-
-                                            <Box sx={{ minWidth: 120 }}>
-                                                <FormControl fullWidth>
-                                                <InputLabel id="demo-simple-select-label">Date</InputLabel>
-                                                <Select
-                                                    labelId="demo-simple-select-label"
-                                                    id="demo-simple-select"
-                                                    value={age}
-                                                    label="Age"
-                                                    onChange={handleChange}
-                                                >
-                                                    <MenuItem value={10}>Date</MenuItem>
-                                                    <MenuItem value={20}>Yesterday</MenuItem>
-                                                    <MenuItem value={30}>Tomorrow</MenuItem>
-                                                    <MenuItem value={40}>This Weak</MenuItem>
-                                                    <MenuItem value={50}>Tish Month</MenuItem>
-                                                </Select>
-                                                </FormControl>
-                                            </Box>
-
-                                        </div>
-
-                                    </div> */}
-
-                  {/* item */}
-                  {/* <div className="FilterItem">
-
-                                        <div className="CustomeInput">
-                                            <TextField id="outlined-basic" label="Search Here..." variant="outlined" />
-                                            <Button> <BsSearch/> </Button>
-                                        </div>
-
-                                    </div> */}
+        
                 </div>
               </div>
 
@@ -531,39 +411,6 @@ const BulkSms = () => {
               <div className="BulkSms">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="BulkSmsItem">
-                    {/* <div className="CustomeInput">
-
-                                        <div className="Item">
-
-                                            <label>Select Sender ID</label>
-
-                                            <div className="Dropdown">
-
-                                            <Box>
-                                                <FormControl fullWidth>
-                                                <InputLabel id="demo-simple-select-label">Select</InputLabel>
-                                                <Select
-                                                    labelId="demo-simple-select-label"
-                                                    id="demo-simple-select"
-                                                    value={age}
-                                                    label="Age"
-                                                    onChange={handleChange}
-                                                >
-                                                    <MenuItem value={10}>Select sender id here</MenuItem>
-                                                    <MenuItem value={20}>Yesterday</MenuItem>
-                                                    <MenuItem value={30}>Tomorrow</MenuItem>
-                                                    <MenuItem value={40}>This Weak</MenuItem>
-                                                    <MenuItem value={50}>Tish Month</MenuItem>
-                                                </Select>
-                                                </FormControl>
-                                            </Box>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div> */}
-
                     <div className="CustomeInput">
                       <label>Select Customer List</label>
 
@@ -573,6 +420,7 @@ const BulkSms = () => {
                             Select Customer List
                           </InputLabel>
                           <Select
+                           {...register("select data ")}
                             labelId="demo-multiple-checkbox-label"
                             id="demo-multiple-checkbox"
                             multiple
@@ -581,6 +429,7 @@ const BulkSms = () => {
                             input={<OutlinedInput label="Tag" />}
                             renderValue={(selected) => selected.join(", ")}
                             MenuProps={MenuProps}
+                            // onChange={handleChangeBulkSMSFetch}
                           >
                             {names.map((name) => (
                               <MenuItem key={name} value={name}>
@@ -611,13 +460,13 @@ const BulkSms = () => {
                       </div>
                     </div>
 
-                    <div className="CustomeInput XLFile">
+                    {/* <div className="CustomeInput XLFile">
                       <div className="Item">
                         <label>Select File (txt, csv, xlsx)</label>
-                        {/* <p>( example: 01700000000, 01700000000, 01700000000, 01700000000 )</p> */}
+                       
                         <input type="file" />
                       </div>
-                    </div>
+                    </div> */}
 
                     <div className="CustomeInput d_flex">
                       {/* <Button>Upload From Excel</Button> */}

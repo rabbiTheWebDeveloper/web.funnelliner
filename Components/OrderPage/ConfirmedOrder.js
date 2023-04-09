@@ -11,7 +11,8 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { headers } from "../../pages/api";
-import { useGetOrdersQuery } from "../../redux/features/api/orderApiSlice";
+import { useGetOrdersQuery } from "../../redux/features/order/orderApi";
+
 
 
 const handleClose = ({ searchQuery }) => {

@@ -6,7 +6,8 @@ import moment from "moment";
 import { useEffect, useRef, useState } from "react";
 import { toast } from 'react-toastify';
 import { headers } from "../../pages/api";
-import { useGetOrdersQuery } from "../../redux/features/api/orderApiSlice";
+import { useGetOrdersQuery } from "../../redux/features/order/orderApi";
+
 
 const ShippedOrder = ({ searchQuery, allProducts, advanceStatus }) => {
     const { data: orderRedux, isLoading:confirmLoding, isError } = useGetOrdersQuery("shipped");

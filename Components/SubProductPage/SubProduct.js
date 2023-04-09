@@ -11,10 +11,12 @@ import { MdProductionQuantityLimits } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Swal from "sweetalert2";
 import { headers, userId } from "../../pages/api";
+import { useGetCategorysQuery } from "../../redux/features/category/categoryApi";
 import ShowCategory from "./ShowCategory";
 import UpdateCategory from "./UpdateCategory";
 
 const SubProduct = () => {
+    const { data, isLoading:bds, isError } = useGetCategorysQuery();
     const [products, setProducts] = useState([]);
     // const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -33,7 +35,7 @@ const SubProduct = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
+// console.log("category " ,data?.data)
     const hanldeFetchCategories = () => {
         axios
             .get(process.env.API_URL + "/client/categories", { headers: headers })

@@ -14,8 +14,8 @@ export let shopId = parseData?.shop_id
 export let domain = parseData?.domain
 export let userId = parseData?.id
 
-export const orderApiSlice = createApi({
-    reducerPath: "orderApi",
+export const apiSlice = createApi({
+    reducerPath: "api",
     baseQuery: fetchBaseQuery({
         baseUrl: "https://dev.funnelliner.com/api/v1/client",
         prepareHeaders: (headers, { getState }) => {
@@ -28,20 +28,10 @@ export const orderApiSlice = createApi({
             return headers;
         },
     }),
-    tagTypes: ["order"],
-    endpoints: (builder) => ({
-        getOrders: builder.query({
-            query: (data) => `/orders?type=${data}`,
-            keepUnusedDataFor: 600,
-        }),
-        addOrder: builder.mutation({
-            query: (data) => ({
-                url: "/orders",
-                method: "POST",
-                body: data,
-            }),
-            invalidatesTags: ["order"],
-        })
-    }),
+    tagTypes: [],
+    endpoints: (builder) => ({})
+  
 });
-export const { useGetOrdersQuery ,useAddOrderMutation} = orderApiSlice;
+
+
+

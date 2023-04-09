@@ -8,7 +8,8 @@ import { BiReceipt } from "react-icons/bi";
 import ReactSelect from 'react-select';
 import Swal from "sweetalert2";
 import { headers, shopId } from "../../pages/api";
-import { useAddOrderMutation } from "../../redux/features/api/orderApiSlice";
+import { useAddOrderMutation } from "../../redux/features/order/orderApi";
+
 
 
 const ManualOrder = ({ setUpdateData, products }) => {
