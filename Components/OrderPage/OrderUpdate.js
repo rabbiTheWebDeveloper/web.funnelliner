@@ -43,7 +43,7 @@ const OrderUpdate = ({ id, products }) => {
         return { value: item.id, label: item.product_name, };
     })
 
-    const defaultProductForSelect = order && order?.order_details && order?.order_details.map(product => ({ value: product.product_id, label: product.product?.product_name }));
+    const defaultProductForSelect = order && order?.order_details && order?.order_details.map(product => ({ value: product.product_id, label: product.product }));
     const onSubmit = (data) => {
         const filteredProductID = productId.filter(id => !defaultProductForSelect.some(product => product.value === id));
         filteredProductID.map(item => {
@@ -144,7 +144,7 @@ const OrderUpdate = ({ id, products }) => {
                                     <TextField
                                         id="outlined-basic"
                                         variant="outlined"
-                                        defaultValue={order?.pricing?.shipping_cost}
+                                        defaultValue={order?.shipping_cost}
                                         {...register("shipping_cost")}
                                     />
                                 </div>

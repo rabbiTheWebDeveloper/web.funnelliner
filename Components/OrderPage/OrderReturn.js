@@ -47,11 +47,6 @@ const OrderReturn = ({ searchQuery, allProducts }) => {
 
 
     useEffect(() => {
-        // axios
-        //     .get(baseUrl + "/client/orders", {headers: headers})
-        //     .then(function (response) {
-        //         // handle success
-        //         let allProduct = response?.data?.data;
         const userProduct = Array.from(allProducts).filter(
             (word) => word?.order_status === "returned"
         );

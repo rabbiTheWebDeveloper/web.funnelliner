@@ -21,16 +21,16 @@ const OrderDetails = ({ id }) => {
                 setOrder(response.data.data);
             });
     }, [id]);
-    console.log(order)
+    console.log( "Order Details " , order)
 
     const { order_details } = order
     const productList = order_details?.map(item => {
-        return item?.product?.product_name
+        return item?.product
     })
 
 
     const prodQuentitea = order_details?.reduce((prevVal, currentVal) => {
-        return prevVal + (currentVal?.product_qty)
+        return prevVal + (currentVal?.quantity)
 
     }, 0)
     // const prodQuentitea = order_details?.map(item => {
@@ -177,7 +177,7 @@ const OrderDetails = ({ id }) => {
                                     id="outlined-basic"
                                     variant="outlined"
                                     disabled
-                                    value={order?.pricing?.discount}
+                                    value={order?.discount}
                                 />
                             </div>
 
@@ -187,7 +187,7 @@ const OrderDetails = ({ id }) => {
                                     id="outlined-basic"
                                     variant="outlined"
                                     disabled
-                                    value={order?.pricing?.shipping_cost}
+                                    value={order?.shipping_cost}
                                 />
                             </div>
 
@@ -197,7 +197,7 @@ const OrderDetails = ({ id }) => {
                                     id="outlined-basic"
                                     variant="outlined"
                                     disabled
-                                    value={order?.pricing?.grand_total}
+                                    value={order?.grand_total}
                                 />
                             </div>
 
@@ -207,7 +207,7 @@ const OrderDetails = ({ id }) => {
                                     id="outlined-basic"
                                     variant="outlined"
                                     disabled
-                                    value={order?.pricing?.advanced}
+                                    value={order?.advanced}
                                 />
                             </div>
 
@@ -218,7 +218,7 @@ const OrderDetails = ({ id }) => {
                                     variant="outlined"
                                     disabled
 
-                                    value={order?.pricing?.due}
+                                    value={order?.due}
                                 />
                             </div>
 

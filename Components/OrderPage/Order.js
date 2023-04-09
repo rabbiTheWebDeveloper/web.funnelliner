@@ -1,13 +1,13 @@
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import {
-    Box,
-    Button,
-    Container,
-    Grid,
-    Pagination,
-    Stack,
-    Tab,
-    TextField
+  Box,
+  Button,
+  Container,
+  Grid,
+  Pagination,
+  Stack,
+  Tab,
+  TextField
 } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 import Tooltip from "@mui/material/Tooltip";
@@ -147,7 +147,7 @@ const Order = ({ ...props }) => {
   //       setIsLoading(false);
   //     });
   // }, [updateData]);
- console.log("orderRedux" , advanceStatus)
+  console.log("orderRedux", advanceStatus)
   const statusSubmit = (id, status) => {
 
     let statusUpdate = {
@@ -240,7 +240,7 @@ const Order = ({ ...props }) => {
   const indexOfLastProducts = currentPage * perPage;
   const indexOfFirstProducts = indexOfLastProducts - perPage;
   const currentProduct =
-  orderRedux?.data && orderRedux?.data?.slice(indexOfFirstProducts, indexOfLastProducts);
+    orderRedux?.data && orderRedux?.data?.slice(indexOfFirstProducts, indexOfLastProducts);
 
   const pageNumbers = [];
   if (searchQuery?.length === 0) {
@@ -565,7 +565,7 @@ const Order = ({ ...props }) => {
       }
     }
   };
-  console.log("Punding" ,currentProduct)
+  console.log("Punding", currentProduct)
 
   return (
     <>
@@ -641,12 +641,15 @@ const Order = ({ ...props }) => {
                           <option value="">Next 7 Days</option>
                           <option value="">Custom Date</option>
                         </select>
+
                       </div>
+
                       <div className="InputDate d_flex">
                         <div className="Item">
                           <label>To</label>
                           <input type="date" />
                         </div>
+
                         <div className="Item">
                           <label>From</label>
                           <input type="date" />
@@ -1308,11 +1311,13 @@ const Order = ({ ...props }) => {
                       <option value="">Next 7 Days</option>
                       <option value="">Custom Date</option>
                     </select>
+
                     <div className="InputDate d_flex">
                       <div className="Item">
                         <label>To</label>
                         <input type="date" />
                       </div>
+
                       <div className="Item">
                         <label>From</label>
                         <input type="date" />
